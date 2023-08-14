@@ -4,7 +4,7 @@ ARG ENERGYPLUS_VERSION
 ARG ENERGYPLUS_SHA
 ARG ENERGYPLUS_INSTALL_VERSION
 ARG ENERGYPLUS_TAG
-ARG UBUNTU_BASE=20.04
+ARG UBUNTU_BASE=22.04
 
 FROM ubuntu:$UBUNTU_BASE AS base
 
@@ -100,6 +100,11 @@ COPY --from=base \
     /usr/lib/x86_64-linux-gnu/libXdmcp.so* \
     /usr/lib/x86_64-linux-gnu/libgomp.so* \
     /usr/lib/x86_64-linux-gnu/
+
+# DMcQ:
+# Install python and dependencies
+RUN apt-get update \
+    && apt-get install -y ca-certificates curl libx11-6 libexpat1 python3 python3-pip python-is-python3
 
 # Add energyplus to PATH so can run "energyplus" in any directory
 ENV PATH="/${ENERGYPLUS_DOWNLOAD_BASENAME}:${PATH}"
