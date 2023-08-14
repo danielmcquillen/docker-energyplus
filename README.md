@@ -2,6 +2,8 @@
 
 ![Build Status](https://github.com/nrel/docker-energyplus/actions/workflows/publish.yml/badge.svg?branch=main)
 
+( Daniel McQ: Modified version to include python and other dependencies.)
+
 
 This project has multiple versions of EnergyPlus ready for use in a single container.
 
